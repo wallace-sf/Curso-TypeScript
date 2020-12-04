@@ -1,3 +1,4 @@
 "use strict";
-var a = 'Teste!';
+const a = 'Teste!';
 console.log(a);
+//# sourceMappingURL=basic.js.map

@@ -1,27 +1,27 @@
 "use strict";
 // string
-var nameTest = 'João';
+let nameTest = 'João';
 // console.log(name);
 // nameTest = 28;
 // numbers
-var idade = 27;
+let idade = 27;
 idade = 27.5;
 // console.log(idade);
-var hasHobbies = false;
+let hasHobbies = false;
 // hasHobbies = 1;
 // console.log(hasHobbies);
 // explicit types
-var myAge;
+let myAge;
 myAge = 27;
 // console.log(typeof myAge);
 // myAge = 'age is 27';
 // console.log(typeof myAge);
 // array
-var hobbies = ['Cook', 'Sports'];
+let hobbies = ['Cook', 'Sports'];
 hobbies = [100, 200, 300];
 // console.log(hobbies);
 // tuples 
-var address = ['Av Principal', 99, 123];
+let address = ['Av Principal', 99, 123];
 // console.log(address); 
 // enums
 var Gender;
@@ -30,11 +30,11 @@ var Gender;
     Gender[Gender["Female"] = 101] = "Female";
     Gender[Gender["NonBinary"] = 2] = "NonBinary";
 })(Gender || (Gender = {}));
-var myGender = Gender.Female;
+let myGender = Gender.Female;
 // console.log(myGender);
 // console.log(Gender.NonBinary);
 // any
-var carro = 'BMW';
+let carro = 'BMW';
 // console.log(carro);
 carro = { marca: 'BMW', ano: 2019 };
 // console.log(carro);
@@ -52,11 +52,11 @@ function multiply(numA, numB) {
 // console.log(multiply(4, 'Bia'));
 // console.log(multiply(4, 9));
 // type function
-var calc;
+let calc;
 calc = multiply;
 // console.log(calc(4, 5));
 // object
-var user = {
+let user = {
     name: 'João',
     age: 27
 };
@@ -65,22 +65,22 @@ user = {
     name: 'Wallace',
     age: 31
 };
-var checkIn = function (time) {
+const checkIn = (time) => {
     return time > 8 ? 'Fora do horário' : 'Dentro do horário';
 };
-var employee = {
+const employee = {
     supervisors: ['Maykel', 'Zé Maria'],
-    checkIn: checkIn,
+    checkIn,
 };
 // console.log(employee.supervisors);
 // console.log(employee.checkIn(5));
 // Union Types
-var nota = 10;
+let nota = 10;
 // console.log(`Minha nota é ${nota}`);
 nota = '10';
 // console.log(`Minha nota é ${nota}`);
 // Checking types
-var value = 30;
+let value = 30;
 if (typeof value === 'number') {
     // console.log('Type number');
 }
@@ -91,10 +91,10 @@ else {
 function getError(msg) {
     throw new Error(msg);
 }
-var product = {
+const product = {
     name: 'Sabão',
     price: 100,
-    validateProduct: function () {
+    validateProduct() {
         if (!this.name || !this.name.trim().length) {
             getError('O nome é obrigatório');
         }
@@ -105,18 +105,31 @@ var product = {
 };
 product.validateProduct();
 // Strict Null Checks
-var height = 12;
+let height = 12;
 // height = null;
-var optionalHeight = 12;
+let optionalHeight = 12;
 optionalHeight = null;
-var contact1 = {
+const contact1 = {
     name: 'Fulano',
     phone1: '98765432',
     phone2: null,
 };
 // console.log(contact1.name, contact1.phone1, contact1.phone2);
-var isNullable = null; // any
+let isNullable = null; // any
 isNullable = 12;
 // console.log(isNullable);
 isNullable = 'abc';
-// console.log(isNullable);
+let contaBancaria = {
+    saldo: 3456,
+    depositar(valor) {
+        this.saldo += valor;
+    }
+};
+let correntista = {
+    nome: 'Ana Silva',
+    contaBancaria: contaBancaria,
+    contatos: ['34567890', '98765432'],
+};
+correntista.contaBancaria.depositar(3000);
+console.log(correntista);
+//# sourceMappingURL=types.js.map

@@ -94,7 +94,7 @@ user = {
   age: 31
 }
 
-// Desafio
+// Desafio #01
 /*
   * Criar um objeto funcionário com:
     - Array de strings com os nomes dos supervisores;
@@ -187,3 +187,36 @@ isNullable = 12;
 // console.log(isNullable);
 isNullable = 'abc';
 // console.log(isNullable);
+
+// Desafio #02
+
+type Deposit = (value: number) => void;
+
+type BankAccount = {
+  saldo: number,
+  depositar: Deposit,
+}
+
+type AccountHolder = {
+  nome: string,
+  contaBancaria: BankAccount,
+  contatos: string[],
+}
+
+
+let contaBancaria: BankAccount = {
+  saldo: 3456,
+  depositar(valor: number): void {
+      this.saldo += valor
+  }
+}
+
+let correntista: AccountHolder = {
+  nome: 'Ana Silva',
+  contaBancaria: contaBancaria,
+  contatos: ['34567890', '98765432'],
+}
+
+correntista.contaBancaria.depositar(3000);
+console.log(correntista);
+
