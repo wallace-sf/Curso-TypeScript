@@ -77,12 +77,36 @@ class Queue {
     }
 }
 const myQueue = new Queue('Maxuel');
-myQueue.next();
-myQueue.join('Ana');
-myQueue.join('Bia');
-myQueue.join('Carlos');
-myQueue.next();
-myQueue.join('João');
-myQueue.next();
-myQueue.print();
+class MapCreator {
+    constructor(...args) {
+        this._items = args;
+    }
+    get(key) {
+        return this._items.find((item) => item.key === key);
+    }
+    set(item) {
+        const foundItem = this.get(item.key);
+        if (!!foundItem) {
+            foundItem.value = item.value;
+        }
+        else {
+            this._items.push(item);
+        }
+    }
+    print() {
+        console.log(this._items);
+    }
+    ;
+    clean() {
+        this._items = [];
+    }
+}
+const myMap = new MapCreator({ key: 1, value: 'Rogério' });
+// console.log(myMap.get(1));
+myMap.set({ key: 2, value: 'Paulo' });
+// myMap.print();
+myMap.set({ key: 1, value: 'Marcio' });
+// console.log(myMap.get(1));
+myMap.clean();
+// myMap.print();
 //# sourceMappingURL=generics.js.map

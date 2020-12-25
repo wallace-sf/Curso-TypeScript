@@ -87,7 +87,7 @@ const d2 = new Data(5, 2, 2020);
 // Attribute: queue (Array)
 // Methods: join, next, print
 
-class Queue<T> {
+class Queue<T extends number | string> {
   private queue: Array<T>;
 
   constructor(...args: T[]) {
@@ -112,14 +112,62 @@ class Queue<T> {
 }
 
 const myQueue = new Queue<string>('Maxuel');
-myQueue.next();
-myQueue.join('Ana');
-myQueue.join('Bia');
-myQueue.join('Carlos');
-myQueue.next();
-myQueue.join('João');
-myQueue.next();
-myQueue.print();
+// myQueue.next();
+// myQueue.join('Ana');
+// myQueue.join('Bia'); 
+// myQueue.join('Carlos');
+// myQueue.next();
+// myQueue.join('João');
+// myQueue.next();
+// myQueue.print();
+
+// Challenge Map
+// Array of Object (key/value) -> itens
+// Methods: get (key), set ({K, V})
+
+// clean, print
+
+type MapItem<T, R> = { key: T, value: R };
+
+class MapCreator<T, R> {
+  private _items: Array<MapItem<T, R>>;
+
+  constructor(...args: MapItem<T, R>[]) {
+    this._items = args;
+  }
+
+  get(key: T): MapItem<T, R> | undefined {
+    return this._items.find((item) => item.key === key);
+  }
+
+  set(item: MapItem<T, R>): void {
+    const foundItem = this.get(item.key);
+
+    if (!!foundItem) {
+      foundItem.value = item.value;
+    } else {
+      this._items.push(item);
+    }
+  }
+
+  print(): void {
+    console.log(this._items);
+  };
+
+  clean(): void {
+    this._items = [];
+  }
+}
+
+const myMap = new MapCreator<number, string>({ key: 1, value: 'Rogério' });
+
+// console.log(myMap.get(1));
+myMap.set({ key: 2, value: 'Paulo' });
+// myMap.print();
+myMap.set({ key: 1, value: 'Marcio'})
+// console.log(myMap.get(1));
+myMap.clean();
+// myMap.print();
 
 
 
